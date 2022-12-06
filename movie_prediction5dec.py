@@ -165,7 +165,7 @@ def show_prediction_page():
         elif revenue[0] == 11:
             revenue = "Acima de 500 milhões"
 
-        st.write(f"X --> {X}")
+        #st.write(f"X --> {X}")
         st.subheader("Sua bilheteria esperada:")
         st.subheader(f"{revenue}")
 
