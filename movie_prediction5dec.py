@@ -107,7 +107,7 @@ def show_prediction_page():
     #with r_col:
         #release_year = st.selectbox("Ano de lançamento:", month_list)
         #release_year = st.number_input('Ano de lançamento:', 1900, 2020)
-    release_year = st.number_input('Ano de lançamento:', 1900, 2020)
+    release_year = st.number_input('Ano de ---lançamento:', 1900, 2020)
     runtime = st.slider("Qual a duração?\n(em minutos)", 30, 240, 120)
     vote = st.slider("Qual a média dos votos da crítica?", 0, 100, 5)
 
