@@ -121,11 +121,13 @@ def show_prediction_page():
 
         from sklearn.preprocessing import LabelEncoder
         le_revenue = LabelEncoder()
+        
         genre_list_transformed = le_revenue.fit_transform(genre_list)
         for i in range(len(genre_list)):
             if genre_list[i] == genre:
                 genre = genre_list_transformed[i]
-
+        release_date = le_revenue.fit_transform(release_year) 
+        
         y = data['revenue']
         X = data.drop('revenue', axis=1)
         X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.2, random_state = 0)
@@ -164,7 +166,7 @@ def show_prediction_page():
         elif revenue[0] == 11:
             revenue = "Acima de 500 milhões"
 
-        #st.write(f"X --> {X}")
+        st.write(f"X --> {X}")
         st.subheader("Sua bilheteria esperada:")
         st.subheader(f"{revenue}")
 
