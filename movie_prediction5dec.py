@@ -107,7 +107,7 @@ def show_prediction_page():
     #with r_col:
         #release_year = st.selectbox("Ano de lançamento:", month_list)
         #release_year = st.number_input('Ano de lançamento:', 1900, 2020)
-    release_year = st.number_input('Ano de ---lançamento:', 1900, 2020)
+    release_year = st.number_input('Ano de lançamento:', 1900, 2020)
     runtime = st.slider("Qual a duração?\n(em minutos)", 30, 240, 120)
     vote = st.slider("Qual a média dos votos da crítica?", 0, 100, 5)
 
@@ -117,8 +117,6 @@ def show_prediction_page():
             is_collection = 1
         else:
             is_collection = 0
-        
-        #release_date = str(release_year) + "-" + str(release_month) + "-" + str(release_day)
        
 
         from sklearn.preprocessing import LabelEncoder
@@ -134,7 +132,7 @@ def show_prediction_page():
         from sklearn.neural_network import MLPClassifier
         X = X_train
         y = y_train
-        clf= MLPClassifier(hidden_layer_sizes=(150,100,50), max_iter=300,activation = 'relu',solver='lbfgs',random_state=1,alpha=1e-5)
+        clf= MLPClassifier(hidden_layer_sizes=(150,200,250), max_iter=300,activation = 'relu',solver='lbfgs',random_state=1,alpha=1e-5)
         clf.fit(X, y)
         MLPClassifier(hidden_layer_sizes=(150,100,50), max_iter=300,activation = 'relu',solver='lbfgs',random_state=1,alpha=1e-5)
         
