@@ -97,16 +97,17 @@ def show_prediction_page():
     budget = st.slider("Qual o seu orçamento?\n(em milhões de dólares)", 0, 900, 450)
     genre = st.selectbox("Qual o gênero do seu filme?", genre_list)
     popularity = st.slider("Qual a popularidade?", 0, 9000, 4500)
-    l_col, m_col, r_col = st.columns(3)
-    with l_col:
+    #l_col, m_col, r_col = st.columns(3)
+    #with l_col:
         #release_day = st.selectbox("Em que dia será lançado?", day_list)
-        release_day = st.number_input('Dia de lançamento:', 1, 31)
-    with m_col:
+        #release_day = st.number_input('Dia de lançamento:', 1, 31)
+    #with m_col:
         #release_month = st.selectbox("Mês de lançamento:", day_list)
-        release_month = st.number_input('Mês de lançamento:', 1, 12)
-    with r_col:
+        #release_month = st.number_input('Mês de lançamento:', 1, 12)
+    #with r_col:
         #release_year = st.selectbox("Ano de lançamento:", month_list)
-        release_year = st.number_input('Ano de lançamento:', 1900, 2020)
+        #release_year = st.number_input('Ano de lançamento:', 1900, 2020)
+    release_year = st.number_input('Ano de lançamento:', 1900, 2020)
     runtime = st.slider("Qual a duração?\n(em minutos)", 30, 240, 120)
     vote = st.slider("Qual a média dos votos da crítica?", 0, 100, 5)
 
