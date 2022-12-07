@@ -9,13 +9,6 @@ def load_model():
     return data
 data = load_model()
 
-# le_collection = data["belongs_to_collection"]	
-# le_budget = data['budget']
-# le_popularity = data['popularity']
-# le_runtime = data['runtime']
-# le_vote = data['vote_average']
-# le_release_date = data['release_date']
-# le_genre = data["genres"]
 
 genre_list = [
     "Action and Thriller",
@@ -38,55 +31,12 @@ genre_list = [
     "Thriller",
     "others"
 ]
-day_list = [
-    "01",
-    "02",
-    "03",
-    "04",
-    "05",
-    "06",
-    "07",
-    "08",
-    "09",
-    "10",
-    "11",
-    "12",
-    "13",
-    "14",
-    "15",
-    "16",
-    "17",
-    "18",
-    "19",
-    "20",
-    "21",
-    "22",
-    "23",
-    "24",
-    "25",
-    "26",
-    "27",
-    "28",
-    "29",
-    "30",
-    "31",
-]
-month_list = [
-    "Janeiro",
-    "Fevereiro",
-    "Março",
-    "Abril",
-    "Maio",
-    "Junho",
-    "Julho",
-    "Agosto",
-    "Setembro",
-    "Outubro",
-    "Novembro",
-    "Dezembro"
-]
 
-release_date = 25
+date_list = [data['release_date']]
+
+
+
+#release_date = 25
 
 def show_prediction_page():
     #st.write(data)
@@ -97,17 +47,7 @@ def show_prediction_page():
     budget = st.slider("Qual o seu orçamento?\n(em milhões de dólares)", 0, 900, 450)
     genre = st.selectbox("Qual o gênero do seu filme?", genre_list)
     popularity = st.slider("Qual a popularidade?", 0, 9000, 4500)
-    #l_col, m_col, r_col = st.columns(3)
-    #with l_col:
-        #release_day = st.selectbox("Em que dia será lançado?", day_list)
-        #release_day = st.number_input('Dia de lançamento:', 1, 31)
-    #with m_col:
-        #release_month = st.selectbox("Mês de lançamento:", day_list)
-        #release_month = st.number_input('Mês de lançamento:', 1, 12)
-    #with r_col:
-        #release_year = st.selectbox("Ano de lançamento:", month_list)
-        #release_year = st.number_input('Ano de lançamento:', 1900, 2020)
-    release_year = st.number_input('Ano de lançamento:', 1900, 2020)
+    release_date = st.number_input('Ano de lançamento:', 1900, 2020)
     runtime = st.slider("Qual a duração?\n(em minutos)", 30, 240, 120)
     vote = st.slider("Qual a média dos votos da crítica?", 0, 100, 5)
 
@@ -117,7 +57,6 @@ def show_prediction_page():
             is_collection = 1
         else:
             is_collection = 0
-       
 
         from sklearn.preprocessing import LabelEncoder
         le_revenue = LabelEncoder()
@@ -126,7 +65,12 @@ def show_prediction_page():
         for i in range(len(genre_list)):
             if genre_list[i] == genre:
                 genre = genre_list_transformed[i]
-        release_date = le_revenue.fit_transform(release_year) 
+        #release_date = le_revenue.fit_transform(['release_date'])
+        # date_list_transformed = le_revenue.fit_transform(date_list)
+        # for i in range(len(date_list)):
+        #     release_date = date_list_transformed[i]
+        #date_list = [data['release_date']]
+
         
         y = data['revenue']
         X = data.drop('revenue', axis=1)
@@ -166,7 +110,7 @@ def show_prediction_page():
         elif revenue[0] == 11:
             revenue = "Acima de 500 milhões"
 
-        st.write(f"X --> {X}")
+        #st.write(f"X --> {X}")
         st.subheader("Sua bilheteria esperada:")
         st.subheader(f"{revenue}")
 
